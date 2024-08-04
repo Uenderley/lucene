@@ -13,8 +13,6 @@ import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.*;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -27,12 +25,8 @@ public class LuceneIndex {
     private Directory directoryIndex;
     private Analyzer analyzer;
 
-    @Value("${root.path.index}")
-    private String rootPathIndex;
-
-
     public LuceneIndex() throws IOException {
-        directoryIndex = FSDirectory.open(Paths.get(rootPathIndex, "Documents", "index"));
+        directoryIndex = FSDirectory.open(Paths.get("/home/uenderley/Documents/index"));
         analyzer = new StandardAnalyzer();
     }
 
